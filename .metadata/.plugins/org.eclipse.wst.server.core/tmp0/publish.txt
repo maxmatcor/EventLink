@@ -1,0 +1,3 @@
+#GlassFish v3 Prelude
+#Mon Dec 02 18:35:48 ARST 2019
+org.eclipse.jst.jee.server\:eventlink=C\:\\GlassFish-Tools-Bundle-For-Eclipse-1.2\\glassfishv3\\glassfish\\domains\\domain1\\eclipseApps\\eventlink

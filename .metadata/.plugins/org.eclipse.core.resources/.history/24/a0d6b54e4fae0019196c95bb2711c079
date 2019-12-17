@@ -1,0 +1,43 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import DAO.eventData;
+
+public class crudEvent {
+	public static List<eventData> listaEventos() {
+		
+		List<eventData> listaEventos = new ArrayList<eventData>();
+		try {
+			Connection conn = null;
+			conn = Conexion.conexion();
+			String sql = "SELECT * FROM eventos";
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+	
+				String Iduser = rs.getString("iduser");
+				String NombreEve = rs.getString("nombreEve");
+				String LugarEve = rs.getString("lugarEve");
+				String TipoEve = rs.getString("tipoEve");
+				String FechaEve = rs.getString("fechaEve");
+				String FechaFinEve = rs.getString("fechaFinEve");
+				String DescripcionEve = rs.getString("descripcionEve");
+				
+				eventData evenData = new eventData(Iduser, NombreEve, LugarEve, TipoEve, FechaEve, FechaFinEve, DescripcionEve);
+				listaEventos.add(evenData);
+			}
+			conn.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listaEventos;
+	}
+
+
+}

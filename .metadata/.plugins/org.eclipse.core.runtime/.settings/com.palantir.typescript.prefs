@@ -1,0 +1,10 @@
+#Tue Jun 18 20:26:45 ART 2019
+syntaxColoring.stringLiteral.color=237,212,0
+syntaxColoring.punctuation.color=211,215,207
+syntaxColoring.keyword.color=255,255,255
+syntaxColoring.identifier.color=211,215,207
+syntaxColoring.numberLiteral.color=206,92,0
+syntaxColoring.comment.color=136,138,133
+eclipse.preferences.version=1
+syntaxColoring.operator.color=216,216,216
+syntaxColoring.regExpLiteral.color=237,212,0

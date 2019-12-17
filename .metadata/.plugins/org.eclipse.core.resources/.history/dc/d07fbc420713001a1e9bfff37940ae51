@@ -1,0 +1,115 @@
+package controler;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.eventData;
+import model.helpData;
+import DAO.Help;
+
+/**
+ * Servlet implementation class helpControler
+ */
+public class helpControler extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public helpControler() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    // INGRESA POR EL GET POR DEFECTO
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		HttpSession sesion = request.getSession(true);//VERIFICA SESION 
+		Help help = Help.getInstace();
+		String action = request.getParameter("action"); //INICIALIZA UN PARAMETRO 
+		String idstr = request.getParameter("id"); //INICIALIZA UN PARAMETRO 
+		
+		
+		if ("delete".equals(action)) {	//VIENE EL ACCION DELETE DEL ADMINCONTACT
+			if (idstr != null) {
+				int id = Integer.parseInt(idstr);
+				Object result =help.DeleteHelp(id);
+				
+				ArrayList<helpData> helpdatas = help.FindAll();
+				request.setAttribute("helpdatas", helpdatas);
+				
+				if(result==null){
+				sesion.setAttribute("msg", "1");
+				}else{sesion.setAttribute("msg", "0");				
+				}		
+				String nextJSP = "/adminContact.jsp";
+				RequestDispatcher dispatcher = getServletContext()
+						.getRequestDispatcher(nextJSP);
+				dispatcher.forward(request, response);
+			}
+		
+		}
+		
+		String nextJSP = "/contact.jsp";
+		RequestDispatcher dispatcher = getServletContext()
+				.getRequestDispatcher(nextJSP);
+		dispatcher.forward(request, response);
+
+	
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		HttpSession sesion = request.getSession(true);
+		Help help = Help.getInstace();
+		String descHelp = request.getParameter("desc");
+		String id = (String) sesion.getAttribute("iduser");
+		String action = request.getParameter("action");
+		helpData helpdata = null;
+
+		if ("create".equals(action)) {
+				if (id != null) { 
+				int iduser = Integer.parseInt(id);
+				int status = 1;
+				helpdata = new helpData(iduser, descHelp, status);
+				Object result = help.CreateHelp(helpdata);
+				if(result==null){
+					sesion.setAttribute("msg", "1");
+					String nextJSP = "/contact.jsp";
+					RequestDispatcher dispatcher = getServletContext()
+							.getRequestDispatcher(nextJSP);
+					dispatcher.forward(request, response);
+
+					}else{sesion.setAttribute("msg", "0");				
+					}		
+
+			}
+		}else if ("FindAll".equals(action)) {
+
+			ArrayList<helpData> helpdatas = help.FindAll();
+			request.setAttribute("helpdatas", helpdatas);
+			String nextJSP = "/adminContact.jsp";
+			RequestDispatcher dispatcher = getServletContext()
+					.getRequestDispatcher(nextJSP);
+			dispatcher.forward(request, response);
+
+		}
+
+		doGet(request,response);
+	}
+	
+	}
+
+

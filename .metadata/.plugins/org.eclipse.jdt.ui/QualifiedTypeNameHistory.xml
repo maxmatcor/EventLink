@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+<fullyQualifiedTypeName name="javax.annotation.Resource"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="org.apache.catalina.Session"/>
+<fullyQualifiedTypeName name="DAO.Conexion"/>
+<fullyQualifiedTypeName name="CRUD.eventos"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="org.glassfish.api.container.RequestDispatcher"/>
+<fullyQualifiedTypeName name="DAO.eventData"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="DAO.Regs"/>
+<fullyQualifiedTypeName name="model.eventData"/>
+<fullyQualifiedTypeName name="DAO.Login"/>
+<fullyQualifiedTypeName name="model.susData"/>
+<fullyQualifiedTypeName name="DAO.Events"/>
+<fullyQualifiedTypeName name="model.userData"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,16 @@
+#Tue Jun 18 20:26:45 ART 2019
+num.TexColor=206,92,0
+def.BibColor=211,215,207
+key.BibColor=255,255,255
+typ.BibColor=187,187,187
+str.BibColor=237,212,0
+equ.TexColor=237,212,0
+def.TexColor=211,215,207
+spe.TexColor=255,255,255
+slc.BibColor=136,138,133
+sqr.TexColor=121,171,255
+verb.TexColor=190,214,255
+crl.TexColor=114,159,207
+eclipse.preferences.version=1
+cmd.TexColor=255,255,255
+com.TexColor=136,138,133

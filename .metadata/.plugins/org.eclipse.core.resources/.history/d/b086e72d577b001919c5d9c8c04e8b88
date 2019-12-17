@@ -1,0 +1,78 @@
+package Servlet;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+/**
+ * Servlet implementation class login
+ *///@WebServlet("/login")
+public class login extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+	//@Resource(name="jdbc/DataSource")
+	
+	//private DataSource fuente;
+    	
+	public login() throws ClassNotFoundException {
+    	Class.forName("com.mysql.jdbc.Driver");
+    }
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+		String usuario = request.getParameter("user");
+		String clave = request.getParameter("password");
+		Connection conn = null;
+		try {
+			
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","root");
+			//conn = fuente.getConnection();
+		String sql="Select * from usuarios where usuario='"+usuario+"'AND pass='"+clave+"'";
+		Statement st= conn.createStatement();
+		ResultSet rs =st.executeQuery(sql);
+		
+		 while (rs.next()){
+			 System.out.println(rs.getString("usuario"));
+			RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
+		rd.forward(request, response);
+				return;
+			}
+				RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+				request.setAttribute("error", "Usuario o clave incorrecto");
+				rd.forward(request, response);
+				System.out.println(sql);
+				 System.out.println(usuario);
+				 System.out.println(clave);
+				conn.close();	
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+}
+	}
+}

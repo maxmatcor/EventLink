@@ -1,0 +1,128 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="DAO.*,model.*,java.util.ArrayList"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>EventLink-Registrarse</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util2.css">
+	<link rel="stylesheet" type="text/css" href="css/main2.css">
+		  <!-- SweetAlert -->
+  <script src='js/sweetalert.min.js'></script>
+  <link rel='stylesheet' type='text/css' href='css/sweetalert.css'>
+<!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+
+	   <!-- mensaje error-->
+<%if (session.getAttribute("msg")=="0"){%>
+		<script>
+		 swal("Ups!","Ese usuario ya esta registrado","error","ok");
+		</script>
+	<%session.setAttribute("msg", "null");%>
+		 
+<%}%>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" id="register-form" action="regControler" method="post" role="form" style="display: block;">
+					<span class="login100-form-title p-b-43">
+						Completa con tus datos
+					</span>
+		
+					<div class="wrap-input100 validate-input" data-validate = "Por favor Ingrese un Usuario">
+						<input class="input100" type="text" name="user" id="user" >
+						<span class="focus-input100"></span>
+						<span class="label-input100">Usuario</span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate="Por favor Ingrese un Email">
+						<input class="input100" type="email" name="email" id="email">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Email</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Por favor Ingrese una contraseÃ±a">
+						<input class="input100" type="password" name="password" id="password">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Contraseña</span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate="Por favor confirme la contraseÃ±a">
+						<input class="input100" type="password" name="confirm-password" id="confirm-password" >
+						<span class="focus-input100"></span>
+						<span class="label-input100">Repita la Contraseña</span>
+					</div>
+					<br></br>
+					<input type="radio" name="role"  value="user" checked>Quiero ir a Eventos<BR>
+					<input type="radio" name="role" value="editor">Quiero crear mis Eventos<BR>
+				<!--=	<input type="checkbox" name="role" value="user">Quiero ir a Eventos<BR>
+					<input type="checkbox" name="role" value="editor">Quiero crear mis Eventos<BR>-->
+					
+					
+					<br></br>
+					<div class="container-login100-form-btn">
+						<button type="submit"  name="action" value="create" id="register-submit" tabindex="4" class="login100-form-btn" >Registrarme</button>
+					</div>
+					
+					<br>
+					<div class="container-login100-form-btn">
+						<a href="index.jsp" class="login100-form-btn">
+							Quiero Iniciar Sesion
+						</a>
+					</div>
+				</form>
+
+								<div class="login100-more" style="background-image: url('img/IconoLog2.jpg');">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main2.js"></script>
+
+</body>
+</html>

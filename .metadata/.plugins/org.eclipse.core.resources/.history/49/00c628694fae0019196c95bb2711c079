@@ -1,0 +1,77 @@
+package Servlet;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import javax.servlet.RequestDispatcher;
+
+import org.glassfish.config.support.CRUD;
+
+import DAO.eventData;
+import DAO.crudEvent;
+
+/**
+ * Servlet implementation class eventCon
+ */
+public class eventCon extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public eventCon() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		String action = request.getParameter("action");
+		System.out.println(action);
+		try {
+			switch (action) {
+			case "lista":
+				lista(request, response);
+				break;
+			case "nuevo":
+				nuevo(request, response);
+			default:
+				break;
+			}			
+		} catch (SQLException e) {
+			e.getStackTrace();
+		}
+		
+		
+	}
+ 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+	
+	private void index (HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		//mostrar(request, response);
+		RequestDispatcher dispatcher= request.getRequestDispatcher("index.jsp");
+		dispatcher.forward(request, response);
+	}
+ 
+	
+	private void lista(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException , ServletException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/editlist.jsp");
+		List<eventData> listaEventos = crudEvent.listaEventos();
+		request.setAttribute("lista", listaArticulos);
+		dispatcher.forward(request, response);
+	}	
+	
+}

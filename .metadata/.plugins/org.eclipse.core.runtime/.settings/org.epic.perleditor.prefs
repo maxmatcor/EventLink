@@ -1,0 +1,27 @@
+#Tue Jun 18 20:26:47 ART 2019
+errorIndicationColor=187,187,187
+comment2Color=136,138,133
+AbstractTextEditor.Color.Background=46,52,54
+othersIndicationColor=211,215,207
+warningIndicationColor=237,212,0
+eclipse.preferences.version=1
+taskIndicationColor=204,223,50
+AbstractTextEditor.Color.Foreground.SystemDefault=false
+operatorColor=216,216,216
+AbstractTextEditor.Color.Foreground=211,215,207
+markupColor=211,215,207
+searchResultIndicationColor=238,238,236
+currentLineColor=85,87,83
+keyword1Color=255,255,255
+literal1Color=237,212,0
+printMarginColor=85,87,83
+bookmarkIndicationColor=136,138,133
+numberColor=206,92,0
+AbstractTextEditor.Color.Background.SystemDefault=false
+functionColor=255,255,255
+lineNumberColor=85,87,83
+keyword2Color=255,255,255
+literal2Color=237,212,0
+variableColor=114,159,207
+comment1Color=136,138,133
+labelColor=211,215,207
